@@ -1,9 +1,43 @@
 <html lang="en-us">
+	<head>
+		<title>Copy Constructor</title>
+	</head>
 	<body>
-	  <head><t><h2 style="color:blue;"><b>Copy Constructor</b></h2></t></head>
+		<t><b><h1 style="font-size:25px">Copy Constructor</h1></b></t>	
 	  <p>As name suggests it copies the object of the class. Whenever we initialize an object with anohter object of same type(class here),
 	  C++ will create the copy of that object by invoking class's special constructor "copy constructor".
 	  <p>
 	  Remember <b>copy constructor</b>is a constructor that accepts another object of the same type as a parameter.</p></p>
+<TABLE> 
+<TR><TD></TD></TR> 
+</TABLE>
+	<t><b><h1 style="font-size:25px"> Abstract Class</h1></b></t>
+	<p><b>What is an Abstract Class:</b>
+Abstract class is a class for which one or more methods are declared but not defined, in other words  compiler knows that these methods exists and validates its prototype  but it does not know these methods are also called as pure virtual functions. </p>
+<p> class shape </p>
+{ 
+public: 
+	virtual void draw() = 0;
+ };
+<p>
+This is an abstract class. The class method has no definition. So compiler does not know what to execute. We canot instantiate this class. So the child class has to provide the function definition.
+So the derived classes will implement the draw() method, that makes the derived class "Concrete Class". We can instantiate the concrete class (The derived class here)	</p>
+
+<p><b>Why we need these?</b></p>
+<p> 
+	The abstract base class will let you hold all types of derived instances in one container.</p>
+<p>Example:</p>
+<p>	std::vector<shape*> my_scene;</p>
+ <p>my_scene.push_back(new circle(40, 30, 10)); </p>
+<p>my_scene.push_back(new rectangle(20, 10, 50, 15)); </p>
+<p>std::for_each(my_scene.begin(), my_scene.end(), std::mem_fun_ref(&shape::draw)</p>
+<p>So now we can draw all shapes in one go. The client does not even required to know types of the shape.
+Ok. . . agreed. We need a base class. But why the function should be initialized to nothing..why not an empty function?</p>
+<p>Void draw() =0 ? //why this</p>
+<p>Void draw() { </p>
+<p>}    //Why not this</p>
+<p><b>Here I explain :</b></p>
+<p>We don't want to create any instances of base class and mistakenly call the "draw" method of base class instead of derived class. It just does not make any sense. 
+	</p>
 	  </body>
 </html>
